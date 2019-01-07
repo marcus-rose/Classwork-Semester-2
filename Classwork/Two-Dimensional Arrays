@@ -1,0 +1,52 @@
+// A one dimensional array
+String[] oneD = new String[10];
+
+//A two dimensional array (rectangular)
+String[][] twoD = new String[4][6];
+// 4 is rows and 6 is columns for a total of 24 possibile array
+
+//---------------------------
+int[][] nums = new int[3][5];
+
+// Changes the value of the value in row one column two to 4
+nums[1][2] = 4;
+//nums[2] is the whole array (row) *Accessing the individual columns is not possible*
+
+
+//To find the sum of all the values in a certain column
+public int sum(int[][] nums, int col) {
+  int sum = 0;
+  for (int r = 0; nums.length > r; r++) {
+    nums[r][col] += sum;
+  }
+  return sum;
+}
+
+//Now, finding all of the values added together in a 2D array
+public int sum(int[][] nums) {
+  int sum = 0;
+  for (int c = 0; c < nums[0].length; c++) {
+    this.sum += sum(nums, c);
+  }
+  return sum;
+}
+
+//Change the value of each element in the 2D array to be the sum of the elements in that column
+public void change(int[][] nums) {
+  for (int r = 0; r < nums.length; r++) {
+    for (int c = 0; c < nums[r].length; c++) {
+      nums[r][c] = sum(nums, c);
+
+    }
+  }
+}
+
+
+public void change (int[][] nums) {
+  for (int[] row : nums) {
+    for (int c = 0; c < row.length; c++) {
+      row[c] = sum(nums, c);
+  }
+}
+
+System.out.println("Hello");
